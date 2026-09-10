@@ -20,4 +20,6 @@ npm run dev
 
 ## Deploy
 
-Vercel. Set `NEXT_PUBLIC_SITE_URL` to the live domain.
+Live: https://houstonairductservice.com
+
+Set `NEXT_PUBLIC_SITE_URL` to that domain.
