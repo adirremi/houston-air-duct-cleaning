@@ -1,26 +1,54 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-ink: #141c1c;
+  --color-paper: #f2eee4;
+  --color-paper-2: #e8e2d4;
+  --color-mist: #c5d4d1;
+  --color-teal: #1a5c5a;
+  --color-teal-deep: #0e3332;
+  --color-copper: #a65b32;
+  --color-line: #cfc6b5;
+  --color-line-strong: #b7ad98;
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-newsreader), ui-serif, Georgia, serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: #1a5c5a;
+  color: #f2eee4;
+}
+
+.vent-ring {
+  background-image: radial-gradient(
+      circle at center,
+      transparent 0 18%,
+      color-mix(in oklab, var(--color-mist) 55%, transparent) 18.5% 19.5%,
+      transparent 20% 38%,
+      color-mix(in oklab, var(--color-mist) 40%, transparent) 38.5% 39.5%,
+      transparent 40% 62%,
+      color-mix(in oklab, var(--color-mist) 28%, transparent) 62.5% 63.5%,
+      transparent 64%
+    ),
+    repeating-conic-gradient(
+      from 0deg,
+      transparent 0deg 12deg,
+      color-mix(in oklab, var(--color-teal) 14%, transparent) 12deg 14deg
+    );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
