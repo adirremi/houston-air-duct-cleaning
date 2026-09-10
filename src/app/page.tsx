@@ -1,26 +1,9 @@
 import { locations } from "@/data/locations";
+import { photos, services } from "@/data/media";
 import { LocationRow } from "@/components/LocationCard";
+import { CoverImage, ServicePhoto } from "@/components/Photo";
 import { PageLink } from "@/components/links";
-import { DuctSlats, Seam, VentMark } from "@/components/marks";
-
-const services = [
-  {
-    title: "Air duct cleaning",
-    text: "Supply and return runs, from the registers back toward the air handler.",
-  },
-  {
-    title: "Dryer vent cleaning",
-    text: "Lint removed from the dryer outlet through the exterior termination.",
-  },
-  {
-    title: "Registers and grilles",
-    text: "Covers taken down, cleaned, and set back on the same openings.",
-  },
-  {
-    title: "Homes and buildings",
-    text: "Houses, apartments, offices, and other occupied Houston properties.",
-  },
-];
+import { Seam } from "@/components/marks";
 
 const steps = [
   { n: "01", title: "Access", text: "Open returns and supplies. Set tools at the unit." },
@@ -32,35 +15,34 @@ const steps = [
 export default function Home() {
   return (
     <>
-      <section className="relative overflow-hidden border-b border-line">
-        <div className="pointer-events-none absolute -right-24 top-8 size-[28rem] rounded-full opacity-70 vent-ring md:right-8" />
-        <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-16 md:grid-cols-[1.2fr_0.8fr] md:px-8 md:py-24">
-          <div>
-            <p className="text-[0.72rem] uppercase tracking-[0.22em] text-teal">
-              Houston, Texas
-            </p>
-            <h1 className="mt-4 max-w-xl font-display text-[3.1rem] leading-[0.95] tracking-tight md:text-7xl">
-              Air duct cleaning.
-              <span className="italic text-teal"> Fifteen locations.</span>
-            </h1>
-            <p className="mt-6 max-w-md text-base leading-7 text-ink/70">
-              Call the location nearest the property. Map and phone are on every page.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <PageLink href="/locations" variant="primary">
-                View locations
-              </PageLink>
-              <PageLink href="/services" variant="outline">
-                Services
-              </PageLink>
-            </div>
-          </div>
-
-          <div className="relative hidden justify-center md:flex">
-            <VentMark className="size-64 text-teal" />
+      <section className="relative isolate overflow-hidden">
+        <CoverImage
+          src={photos.hero.src}
+          alt={photos.hero.alt}
+          priority
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-teal-deep/94 via-teal-deep/78 to-teal-deep/35" />
+        <div className="relative mx-auto max-w-6xl px-5 py-20 md:px-8 md:py-28">
+          <p className="text-[0.72rem] uppercase tracking-[0.22em] text-mist">
+            Houston, Texas
+          </p>
+          <h1 className="mt-4 max-w-xl font-display text-[3.1rem] leading-[0.95] tracking-tight text-paper md:text-7xl">
+            Air duct cleaning.
+            <span className="italic text-mist"> Fifteen locations.</span>
+          </h1>
+          <p className="mt-6 max-w-md text-base leading-7 text-paper/75">
+            Call the location nearest the property. Map and phone are on every page.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <PageLink href="/locations" variant="paper">
+              View locations
+            </PageLink>
+            <PageLink href="/services" variant="ghostLight">
+              Services
+            </PageLink>
           </div>
         </div>
-        <DuctSlats className="w-full text-teal" />
       </section>
 
       <section className="mx-auto max-w-6xl px-5 py-16 md:px-8">
@@ -93,15 +75,18 @@ export default function Home() {
           <h2 className="mt-2 font-display text-4xl tracking-tight">
             What we clean
           </h2>
-          <div className="mt-10 grid gap-px bg-line sm:grid-cols-2">
+          <div className="mt-10 grid gap-4 sm:grid-cols-2">
             {services.map((service) => (
-              <article key={service.title} className="bg-paper-2 p-6 md:p-8">
-                <h3 className="font-display text-2xl tracking-tight">
-                  {service.title}
-                </h3>
-                <p className="mt-3 max-w-sm text-sm leading-6 text-ink/70">
-                  {service.text}
-                </p>
+              <article key={service.title} className="border border-line bg-paper">
+                <ServicePhoto src={service.image.src} alt={service.image.alt} />
+                <div className="p-6 md:p-8">
+                  <h3 className="font-display text-2xl tracking-tight">
+                    {service.title}
+                  </h3>
+                  <p className="mt-3 max-w-sm text-sm leading-6 text-ink/70">
+                    {service.text}
+                  </p>
+                </div>
               </article>
             ))}
           </div>

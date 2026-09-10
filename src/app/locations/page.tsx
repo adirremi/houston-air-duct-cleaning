@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { locations, regions } from "@/data/locations";
 import { LocationCard } from "@/components/LocationCard";
-import { Seam } from "@/components/marks";
+import { PageBanner } from "@/components/Photo";
 
 export const metadata: Metadata = {
   title: "Locations",
@@ -11,19 +11,15 @@ export const metadata: Metadata = {
 
 export default function LocationsPage() {
   return (
-    <div className="mx-auto max-w-6xl px-5 py-14 md:px-8 md:py-20">
-      <p className="text-[0.7rem] uppercase tracking-[0.18em] text-teal">
-        Locations
-      </p>
-      <h1 className="mt-3 max-w-2xl font-display text-5xl tracking-tight md:text-6xl">
-        Fifteen addresses. One city.
-      </h1>
-      <p className="mt-5 max-w-xl text-base leading-7 text-ink/70">
-        Each location has a direct number and a Google Map. Open the page for
-        the street you need.
-      </p>
-      <Seam className="my-12" />
+    <>
+      <PageBanner kicker="Locations" title="Fifteen addresses. One city.">
+        <p className="mt-5 max-w-xl text-base leading-7 text-paper/75">
+          Each location has a direct number and a Google Map. Open the page for
+          the street you need.
+        </p>
+      </PageBanner>
 
+      <div className="mx-auto max-w-6xl px-5 py-14 md:px-8 md:py-20">
       <div className="space-y-14">
         {regions.map((region) => {
           const group = locations.filter((location) => location.region === region);
@@ -43,6 +39,7 @@ export default function LocationsPage() {
           );
         })}
       </div>
-    </div>
+      </div>
+    </>
   );
 }

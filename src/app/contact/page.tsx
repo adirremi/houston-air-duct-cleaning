@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { locations, regions, telHref } from "@/data/locations";
+import { PageBanner } from "@/components/Photo";
 import { MapLink, PhoneLink } from "@/components/links";
-import { Seam } from "@/components/marks";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -12,18 +12,14 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="mx-auto max-w-6xl px-5 py-14 md:px-8 md:py-20">
-      <p className="text-[0.7rem] uppercase tracking-[0.18em] text-teal">
-        Contact
-      </p>
-      <h1 className="mt-3 max-w-2xl font-display text-5xl tracking-tight md:text-6xl">
-        Call the location that fits the job.
-      </h1>
-      <p className="mt-5 max-w-xl text-base leading-7 text-ink/70">
-        Numbers below ring that address. Maps open in Google Maps.
-      </p>
-      <Seam className="my-12" />
+    <>
+      <PageBanner kicker="Contact" title="Call the location that fits the job.">
+        <p className="mt-5 max-w-xl text-base leading-7 text-paper/75">
+          Numbers below ring that address. Maps open in Google Maps.
+        </p>
+      </PageBanner>
 
+      <div className="mx-auto max-w-6xl px-5 py-14 md:px-8 md:py-20">
       <div className="space-y-12">
         {regions.map((region) => (
           <section key={region}>
@@ -65,6 +61,7 @@ export default function ContactPage() {
           </section>
         ))}
       </div>
-    </div>
+      </div>
+    </>
   );
 }

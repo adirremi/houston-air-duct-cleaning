@@ -6,9 +6,12 @@ const variants = {
   primary:
     "bg-teal text-paper hover:bg-teal-deep",
   ink: "bg-ink text-paper hover:bg-teal-deep",
+  paper: "bg-paper text-ink hover:bg-paper-2",
   outline:
     "border border-line-strong bg-transparent text-ink hover:border-teal hover:text-teal",
   ghost: "text-ink underline-offset-4 hover:underline",
+  ghostLight:
+    "border border-paper/45 bg-transparent text-paper hover:bg-paper/10",
 };
 
 type Variant = keyof typeof variants;

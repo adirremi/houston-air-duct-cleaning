@@ -30,6 +30,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "website",
     siteName: site.name,
+    images: [{ url: "/images/hero-ducts.jpg" }],
   },
   robots: {
     index: true,
